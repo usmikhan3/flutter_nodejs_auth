@@ -6,6 +6,7 @@ const auth = require('./middlewares/auth')
 const errors = require('./middlewares/error');
 
 const unless = require('express-unless');
+const swaggerUI = require("swagger-ui-express"), swaggerDocument = require('./swagger.json');
 
 const app =express();
 
@@ -32,6 +33,10 @@ app.use(
     path: [
       { url: "/users/login", methods: ["POST"] },
       { url: "/users/register", methods: ["POST"] },
+      { url: "/users/otplogin", methods: ["POST"] },
+      { url: "/users/verifyOTP", methods: ["POST"] },
+      { url: "/api-docs" },
+      
       
     ],
   })
@@ -42,6 +47,8 @@ app.use(express.json());
 app.use("/users",require("./routes/user.routes"));
 
 app.use(errors.errorHandler);
+
+app.use("/api-docs",swaggerUI.serve,swaggerUI.setup(swaggerDocument));
 
 app.listen(process.env.port || 4000, function(){
     console.log("ready to go ")

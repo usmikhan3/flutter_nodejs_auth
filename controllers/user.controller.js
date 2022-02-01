@@ -39,3 +39,29 @@ exports.userProfile = (req,res,next)=>{
     });
 };
 
+
+
+exports.otpLogin = (req,res,next)=>{
+    userService.createOTP(req.body,(error,result)=>{
+        if(error){
+            return next(error);
+        }
+        return res.status(200).send({
+            message:"Success",
+            data:result
+        })
+    })
+};
+
+exports.verifyOTP = (req,res,next)=>{
+    userService.verifyOTP(req.body,(error,result)=>{
+       if(error){
+           return next(error);
+       }
+       return res.status(200).send({
+        message:"Success",
+        data:result
+    });
+    });
+};
+

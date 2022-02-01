@@ -1,0 +1,23 @@
+{
+    "swagger":"2.0",
+    "info":{
+        "version":"1.0.0",
+        "title":"Shopping App - CRUD",
+        "desription":"My Shopping App Project Application API",
+        "license":{
+            "name":"MIT",
+            "url":"https://opensource.org/licenses/MIT"
+        }
+    },
+    "host":"localhost:5000",
+    "basePath":"/",
+    "tags":[
+        {
+            "name":"Products",
+            "description":"Products API"
+        }
+    ],
+    "Schemes":["http "],
+    "consumes":["application/json"],
+    "produces":["application/json"]
+}
